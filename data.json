@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Goa Honeymoon Trip",
+    "location": "Goa",
+    "price": 12000,
+    "days": 3
+  },
+  {
+    "id": 2,
+    "title": "Keralam Paradise Trip",
+    "location": "Kerala", 
+    "price": 15000,
+    "days": 4
+  },
+  {
+    "id": 3,
+    "title": "Manali High Trip ",
+    "location": "Himachal",
+    "price": 18000,
+    "days": 5
+  }
+]

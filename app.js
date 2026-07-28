@@ -1,26 +1,43 @@
- //Fetch tours from data.json
-fetch('data.json')
-  .then(response => response.json())
-  .then(tours => {
-    console.log("Tours loaded:", tours); // check console
-    displayTours(tours);
-  })
-  .catch(error => console.error("Error:", error));
 
-// Function to show tours on page
-function displayTours(tours) {
-  const tourList = document.getElementById('tour-list');
-  tourList.innerHTML = ''; // clear "Loading..."
 
-  tours.forEach(tour => {
-    const tourCard = `
-      <div style="border:1px solid #ccc; padding:10px; margin:10px; border-radius:8px;">
-        <h2>${tour.title}</h2>
+
+console.log('app.js started');
+
+const tours = [
+  { "title": "Goa Beach Trip", "location": "Goa", "price": 12000, "days": 3 },
+  { "title": "Mumbai City Tour", "location": "Mumbai", "price": 5000, "days": 1 },
+  { "title": "Kerala Backwaters", "location": "Kerala", "price": 15000, "days": 5 },
+  { "title": "Delhi Heritage", "location": "Delhi", "price": 8000, "days": 2 }
+];
+
+const tourList = document.getElementById('tour-list');
+const search = document.getElementById('search');
+
+function displayTours(filteredTours) {
+  tourList.innerHTML = ''; 
+  if(filteredTours.length === 0){
+    tourList.innerHTML = '<p>No tours found</p>';
+    return;
+  }
+  filteredTours.forEach(tour => {
+    tourList.innerHTML += `
+      <div class="tour-card">
+        <h3>${tour.title}</h3>
         <p><b>Location:</b> ${tour.location}</p>
-        <p><b>Days:</b> ${tour.days}</p>
+        <p><b>Days:</b> ${tour.days} Days</p>
         <p><b>Price:</b> ₹${tour.price}</p>
       </div>
     `;
-    tourList.innerHTML += tourCard;
   });
 }
+
+displayTours(tours); // Show tours immediately
+
+search.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  const filtered = tours.filter(tour => 
+    tour.location.toLowerCase().includes(searchTerm) || 
+    tour.title.toLowerCase().includes(searchTerm)
+  );
+  displayTours(filtered);
+});

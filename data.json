@@ -1,0 +1,24 @@
+
+[
+  {
+    "id": 1,
+    "title": "Goa Beach Trip",
+    "location": "Goa",
+    "price": 12000,
+    "days": 3
+  },
+  {
+    "id": 2,
+    "title": "Kerala Backwaters",
+    "location": "Kerala", 
+    "price": 15000,
+    "days": 4
+  },
+  {
+    "id": 3,
+    "title": "Manali Adventure",
+    "location": "Himachal",
+    "price": 18000,
+    "days": 5
+  }
+]

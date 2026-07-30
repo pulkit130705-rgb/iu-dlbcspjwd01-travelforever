@@ -15,3 +15,4 @@
     - [ ] Add "Book Now" button
 
     **Live Demo**: Open `index.html` with Live Server
+Last updated:28 July 2026

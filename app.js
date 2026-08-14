@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       search.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const filtered = tours.filter(tour => 
+          tour.title.toLowerCase().includes(searchTerm) ||
           tour.location.toLowerCase().includes(searchTerm)
         );
         displayTours(filtered);

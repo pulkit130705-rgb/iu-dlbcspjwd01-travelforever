@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "Goa Beach Tour",
+    "location": "Goa",
+    "price": 12000,
+    "description": "3 days 2 nights beach package"
+  },
+  {
+    "id": 2,
+    "name": "Manali Adventure",
+    "location": "Manali",
+    "price": 15000,
+    "description": "Mountain trekking and snow"
+  },
+  {
+    "id": 3,
+    "name": "Jaipur Heritage",
+    "location": "Jaipur",
+    "price": 10000,
+    "description": "Palaces and forts tour"
+  },
+  {"id": 4,
+    "name": "Delhi Cultural tour ",
+    "location": "Delhi",
+    "price": 8000,
+    "description": "Monuments and heritage tour"
+  },
+  {
+    "id": 5,
+    "name": "Kerala Backwaters",
+    "location": "Kerala",
+    "price": 18000,
+    "description": "houseboat stay and backwater cruise"
+  
+  }
+
+
+
+]
+

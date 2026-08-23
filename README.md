@@ -46,7 +46,7 @@ learning-js/
 
 1. **Clone the repo**
 ```bash
-git clone https://github.com/your-username/travel-forever.git
+git clone https://github.com/pulkit130705-rgb/iu-dlbcspjwd01-travelforevergit.git
 cd travel-forever
 ```
 cd Backend

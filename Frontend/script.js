@@ -38,3 +38,13 @@ searchInput.addEventListener('input', (e) => {
 });
 
 loadTours(); // <-- This line calls it when page loads
+const sortSelect = document.getElementById('sortSelect');
+sortSelect.addEventListener('change', () => {
+  let sorted = [...allTours];
+  if(sortSelect.value === 'low') {
+    sorted.sort((a,b) => a.price - b.price);
+  } else if(sortSelect.value === 'high') {
+    sorted.sort((a,b) => b.price - a.price);
+  }
+  displayTours(sorted);
+});

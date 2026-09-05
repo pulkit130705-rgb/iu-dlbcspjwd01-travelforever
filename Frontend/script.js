@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadTours() {
   try {
-    const res = await fetch('http://localhost:3000/api/tours');
+    const res = await fetch('https://iu-dlbcspjwd01-travelforever-backend.onrender.com/api/tours');
     allTours = await res.json();
     displayTours(allTours);
   } catch (err) {
@@ -75,4 +75,4 @@ sortSelect.addEventListener('change', () => {
     sorted.sort((a,b) => b.price - a.price);
   }
   displayTours(sorted);
-});
+}); 

@@ -34,7 +34,7 @@ function displayTours(tours) {
     div.className = 'tour-card';
     div.innerHTML = `
       <h3>${tour.name} - ${tour.location}</h3>
-      <p>Price: $${tour.price}</p>
+      <p>Price: Rs${tour.price}</p>
       <button onclick="bookTour(${tour.id})" 
         style="background:${isBooked ? 'green' : '#ff6b00'}; color:white; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;"
         ${isBooked ? 'disabled' : ''}>

@@ -1,22 +1,40 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Forever - Tours</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Forever - Tours</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Travel Forever - Phase 3</h1>
-    <input type="text" id="search" placeholder="Search city like Goa, Manali...">
-    <select id="sortSelect">
-  <option value="default">Sort by Price</option>
-  <option value="low">Low to High</option>
-  <option value="high">High to Low</option>
+
+<h1>Travel Forever - Phase 3</h1>
+
+<div id="booking-count" style="background:#000; color:#fff; padding:5px 10px; border-radius:20px; display:inline-block; margin-bottom:10px;">
+Bookings: 0
+</div>
+
+<input type="text" id="search" placeholder="Search city like Goa, Manali...">
+
+<select id="sortSelect">
+<option value="default">Sort by Price</option>
+<option value="low">Low to High</option>
+<option value="high">High to Low</option>
 </select>
-    <div id="tour-list" class="tour-grid">Loading tours...</div>
-    <script src="script.js"></script>
+
+<div id="tour-list" class="tour-grid">Loading tours...</div>
+
+
+<div style="margin-top:30px; padding:20px; background:#f5f5f5; border-radius:10px;">
+  <h2>Our Goa Tour Highlights</h2>
+  <iframe width="100%" height="350" 
+  src="https://youtube.com/embed/mY81vrSNrK4" 
+  title="Goa Travel Video" 
+  frameborder="0" 
+  allowfullscreen>
+  </iframe>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

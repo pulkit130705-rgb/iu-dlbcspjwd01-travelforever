@@ -1,94 +1,51 @@
-# 1u-dlbcspjwd01-travelforever
+# IU-DLBCSPJWD01 - Travel Forever - Phase 3 COMPLETED
 
-# Travel Forever - Phase 2
+A responsive full-stack tour booking website.
 
-A responsive full-stack tour booking website. Users can view all tour packages and search by city.
+## Live Deployment
+- **Frontend (Vercel):** https://iu-dlbcspjwd01-travelforever.vercel.app
+- **Backend (Render):** https://iu-dlbcspjwd01-travelforever-backend.onrender.com
+- **Backend API Test:** /api/tours -> returns all tours from data.json
 
-## What's Done
-- [x] Backend API: `GET /api/tours` built with Node.js + Express
-- [x] Load data from `data.json` using fetch
-- [x] Display tour cards dynamically
-- [x] Live search filter by city/location
-- [x] Responsive basic styling
+## What's Done - Phase 3
+- [x] Backend API: GET /api/tours built with Express
+- [x] Data: All tours stored in Backend/data.json and served via API
+- [x] Frontend: Dynamic loading of tour cards via fetch()
+- [x] Search: Live search filter by city/location
+- [x] Sort: Sort by Price (Low to High, High to Low)
+- [x] Features: Tour images, "Book Now" button with localStorage, YouTube embed (Goa)
 - [x] Error States: "No tours found" message
-
-## Next Steps
-- [ ] Add tour images
-- [ ] Add "Book Now" button
-- [ ] Embed YouTube video
-- [ ] Deploy to Render/Vercel
-
-## Features Completed
-- **Backend API**: `GET /api/tours` built with Node.js + Express
-- **Data**: All tours stored in `data.json`
-- **Frontend**: Dynamic loading of tours using Fetch API
-- **Live Search**: Filter tours by location in real-time
-- **Responsive Design**: Works on mobile, tablet, desktop
-
-## Tech Stack
-**Backend**: Node.js, Express.js, CORS 
-**Frontend**: HTML5, CSS3, Vanilla JavaScript 
-**Data**: JSON
+- [x] Responsive styling
+- [x] Deployed to Vercel + Render
 
 ## Project Structure
 learning-js/
 ├── Backend/
-│   ├── app.js          # Express server
-│   ├── data.json       # Tour data
-│   └── package.json
+│ ├── app.js (Express server)
+│ ├── data.json (Tour data)
+│ └── package.json
 ├── Frontend/
-│   ├── index.html      # Main page
-│   ├── style.css       # Styling
-│   └── script.js       # Fetch + Search logic
-└── screenshots/        # App screenshots
-
-## ▶️ How to Run Locally
-
-1. **Clone the repo**
-```bash
-git clone https://github.com/pulkit130705-rgb/iu-dlbcspjwd01-travelforevergit.git
-cd travel-forever
-```
-cd Backend
-npm install express cors
-node app.js
-Output: Backend running on http://localhost:3000
-
-Open Frontend/index.html with "Live Server" in VS Code
-Test API
-Open http://localhost:3000/api/tours to see JSON data
-
-### Last Updated: 22 AUG 2026
-
-# Travel Forever - Phase 3 - COMPLETED
-
-## What's Done
-- [x] Error States: "No tours found" message
-- [x] Backend API running on port 3000
-- [x] Add tour images
-- [x] Add "Book Now" button with localStorage
-- [x] Embed YouTube video (Goa Tour Highlights)
-- [x] Sort by Price (Low to High, High to Low)
-- [x] Live Search by location
-- [x] Responsive Design
-
-## Next Steps
-- [x] All Phase 3 features COMPLETED
-- [ ] Deploy to Render/Vercel - In Progress
-
-## Features Completed
-- **Backend API**: `GET /api/tours` built with Node.js + Express
-- **Data**: All tours stored in `data.json` (Delhi, Kerala, Goa etc)
-- **Frontend**: Dynamic loading of tours using Fetch API
-- **Live Search**: Filter tours by location in real-time
-- **Sort**: Sort tours by Price Low to High / High to Low
-- **Booking Logic**: Book Now button saves to localStorage, shows Booked state, updates booking count
-- **YouTube Embed**: Embedded travel video using iframe with youtube.com/embed
-- **Responsive Design**: Works on mobile, tablet, desktop
+│ ├── index.html
+│ ├── script.js
+│ └── style.css
+└── README.md
 
 ## Tech Stack
-- **Backend**: Node.js, Express.js, CORS
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Data**: JSON
-- **Storage**: localStorage for bookings
-- **Media**: YouTube iframe API
+- Frontend: HTML, CSS, JavaScript (fetch API)
+- Backend: Node.js, Express.js, CORS
+- Deployment: Vercel (Frontend), Render (Backend)
+
+## How to Run Locally
+1. Clone repo:
+   git clone https://github.com/pulkit130705-rgb/iu-dlbcspjwd01-travelforever.git
+2. Run Backend:
+   cd Backend
+   npm install
+   node app.js
+   Output: Backend running on http://localhost:3000
+3. Run Frontend:
+   Open Frontend/index.html with "Live Server" in VS Code
+4. Test API:
+   Open http://localhost:3000/api/tours
+
+Last Updated: 06 Sep 2026

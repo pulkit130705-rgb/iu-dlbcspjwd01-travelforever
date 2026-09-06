@@ -1,41 +1,42 @@
 [
   {
     "id": 1,
-    "name": "Goa Beach Tour",
-    "location": "Goa",
+    "city": "Goa",
+    "name": "Goa",
     "price": 12000,
-    "description": "3 days 2 nights beach package"
+    "description": "3 days 2 nights beach package",
+    "image": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500"
   },
   {
     "id": 2,
-    "name": "Manali Adventure",
-    "location": "Manali",
+    "city": "Manali",
+    "name": "Manali",
     "price": 15000,
-    "description": "Mountain trekking and snow"
+    "description": "Mountain trekking and snow adventure",
+    "image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500"
   },
   {
     "id": 3,
-    "name": "Jaipur Heritage",
-    "location": "Jaipur",
+    "city": "Jaipur",
+    "name": "Jaipur",
     "price": 10000,
-    "description": "Palaces and forts tour"
+    "description": "Palaces and forts tour",
+    "image": "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=500"
   },
-  {"id": 4,
-    "name": "Delhi Cultural tour ",
-    "location": "Delhi",
+  {
+    "id": 4,
+    "city": "Delhi",
+    "name": "Delhi",
     "price": 8000,
-    "description": "Monuments and heritage tour"
+    "description": "Monuments and heritage tour",
+    "image": "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500"
   },
   {
     "id": 5,
-    "name": "Kerala Backwaters",
-    "location": "Kerala",
+    "city": "Kerala",
+    "name": "Kerala",
     "price": 18000,
-    "description": "houseboat stay and backwater cruise"
-  
+    "description": "houseboat stay and backwater cruise",
+    "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500"
   }
-
-
-
 ]
-

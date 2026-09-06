@@ -1,78 +1,74 @@
-const tourList = document.getElementById('tour-list');
-const searchInput = document.getElementById('search');
+const API_URL = "https://iu-dlbcspjwd01-travelforever-backend.onrender.com/api/tours";
+const toursContainer = document.getElementById("tours-container");
+const searchInput = document.getElementById("search");
+const sortSelect = document.getElementById("sort");
 let allTours = [];
-let filteredTours = [];
-let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-// Update counter on page load
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('booking-count').innerText = `Bookings: ${bookings.length}`;
-});
+let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
 
+// 1. LOADING STATE FOR RENDER COLD START - THIS FIXES IT
+toursContainer.innerHTML = "<p style='text-align:center; padding:20px;'>Loading tours... Please wait 30s (Render free tier cold start) ⏳</p>";
 
-async function loadTours() {
-  try {
-    const res = await fetch('https://iu-dlbcspjwd01-travelforever-backend.onrender.com/api/tours');
-    allTours = await res.json();
+// 2. FETCH FROM LIVE BACKEND
+fetch(API_URL)
+  .then(response => {
+    if (!response.ok) throw new Error("Network error");
+    return response.json();
+  })
+  .then(data => {
+    allTours = data;
     displayTours(allTours);
-  } catch (err) {
-    tourList.innerHTML = '<p style="color:red">Error: Could not load tours. Is backend running?</p>';
-    console.error(err);
-  }
-}
-
-function displayTours(tours) {
-  tourList.innerHTML = '';
-  if (tours.length === 0) {
-    tourList.innerHTML = '<p>No tours found</p>';
-    return;
-  }
-  filteredTours = tours;
-  
-  tours.forEach(tour => {
-    const isBooked = bookings.some(b => b.id === tour.id);
-    const div = document.createElement('div');
-    div.className = 'tour-card';
-    div.innerHTML = `
-      <h3>${tour.name} - ${tour.location}</h3>
-      <p>Price: Rs${tour.price}</p>
-      <button onclick="bookTour(${tour.id})" 
-        style="background:${isBooked ? 'green' : '#ff6b00'}; color:white; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;"
-        ${isBooked ? 'disabled' : ''}>
-        ${isBooked ? '✓ Booked' : 'Book Now'}
-      </button>
-    `;
-    tourList.appendChild(div);
+  })
+  .catch(error => {
+    console.error(error);
+    toursContainer.innerHTML = "<p style='color:red; text-align:center;'>Failed to load tours. Backend is waking up, please refresh after 30 seconds.</p>";
   });
-}
 
-function bookTour(id) {
-  const tour = allTours.find(t => t.id === id);
-  if (bookings.some(b => b.id === id)) {
-    alert('Already booked!');
+// 3. DISPLAY FUNCTION (REUSABLE FOR SEARCH/SORT)
+function displayTours(tours) {
+  toursContainer.innerHTML = "";
+  if (tours.length === 0) {
+    toursContainer.innerHTML = "<p>No tours found.</p>";
     return;
   }
-  bookings.push(tour);
-  localStorage.setItem('bookings', JSON.stringify(bookings));
-  document.getElementById('booking-count').innerText = `Bookings: ${bookings.length}`;
-  alert(`Booked: ${tour.name} for $${tour.price}`);
-  displayTours(filteredTours);
+  tours.forEach(tour => {
+    const card = `
+      <div class="tour-card">
+        <img src="${tour.image}" loading="lazy" alt="${tour.location}">
+        <h3>${tour.location}</h3>
+        <p>Price: $${tour.price}</p>
+        <p>${tour.description || 'Amazing tour package'}</p>
+        <button onclick="bookTour(${tour.id})">Book Now</button>
+      </div>
+    `;
+    toursContainer.innerHTML += card;
+  });
+  updateBookingCount();
 }
 
-
-searchInput.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  const filtered = allTours.filter(t => t.location.toLowerCase().includes(searchTerm));
+// 4. SEARCH
+searchInput.addEventListener("input", (e) => {
+  const query = e.target.value.toLowerCase();
+  const filtered = allTours.filter(t => t.location.toLowerCase().includes(query));
   displayTours(filtered);
 });
 
-loadTours(); // <-- This line calls it when page loads
-const sortSelect = document.getElementById('sortSelect');
-sortSelect.addEventListener('change', () => {
+// 5. SORT BY PRICE
+sortSelect.addEventListener("change", (e) => {
   let sorted = [...allTours];
-  if(sortSelect.value === 'low') {
-    sorted.sort((a,b) => a.price - b.price);
-  } else if(sortSelect.value === 'high') {
-    sorted.sort((a,b) => b.price - a.price);
-  }
+  if (e.target.value === "low-high") sorted.sort((a,b) => a.price - b.price);
+  if (e.target.value === "high-low") sorted.sort((a,b) => b.price - a.price);
   displayTours(sorted);
-}); 
+});
+
+// 6. BOOKING WITH LOCALSTORAGE PERSISTENCE
+function bookTour(id) {
+  bookings.push(id);
+  localStorage.setItem("bookings", JSON.stringify(bookings));
+  updateBookingCount();
+  alert("Tour Booked! Check counter.");
+}
+
+function updateBookingCount() {
+  const counter = document.getElementById("booking-count");
+  if (counter) counter.innerText = bookings.length;
+}

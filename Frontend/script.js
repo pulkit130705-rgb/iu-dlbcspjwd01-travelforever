@@ -31,13 +31,15 @@ function displayTours(tours) {
     return;
   }
   tours.forEach(tour => {
+  const isBooked = bookings.includes(tour.id);  
+  const btnLabel = isBooked ? "Booked ✓" : "Book Now";    
     const card = `
       <div class="tour-card">
         <img src="${tour.image}" loading="lazy" alt="${tour.location}">
         <h3>${tour.location}</h3>
-        <p>Price: $${tour.price}</p>
+        <p>Price: Rs.${tour.price}</p>
         <p>${tour.description || 'Amazing tour package'}</p>
-        <button onclick="bookTour(${tour.id})">Book Now</button>
+        <button onclick="bookTour(${tour.id})" ${isBooked ? "disabled" : ""}>${btnLabel}</button>
       </div>
     `;
     toursContainer.innerHTML += card;
@@ -55,8 +57,8 @@ searchInput.addEventListener("input", (e) => {
 // 5. SORT BY PRICE
 sortSelect.addEventListener("change", (e) => {
   let sorted = [...allTours];
-  if (e.target.value === "low-high") sorted.sort((a,b) => a.price - b.price);
-  if (e.target.value === "high-low") sorted.sort((a,b) => b.price - a.price);
+  if (e.target.value === "low") sorted.sort((a,b) => Number(a.price) - Number(b.price));
+if (e.target.value === "high") sorted.sort((a,b) => Number(b.price) - Number(a.price));
   displayTours(sorted);
 });
 
@@ -65,10 +67,10 @@ function bookTour(id) {
   bookings.push(id);
   localStorage.setItem("bookings", JSON.stringify(bookings));
   updateBookingCount();
-  alert("Tour Booked! Check counter.");
+  displayTours(allTours); // re-render so button shows Booked
 }
 
 function updateBookingCount() {
-  const counter = document.getElementById("booking-count");
-  if (counter) counter.innerText = bookings.length;
+  const countEl = document.getElementById("booking-count");
+  if (countEl) countEl.textContent = `Bookings:${bookings.length}`;
 }

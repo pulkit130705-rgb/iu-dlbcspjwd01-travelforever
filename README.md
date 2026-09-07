@@ -19,7 +19,7 @@ A responsive full-stack tour booking website.
 - [x] Deployed to Vercel + Render
 
 ## Project Structure
-learning-js/
+
 ├── Backend/
 │ ├── app.js (Express server)
 │ ├── data.json (Tour data)
@@ -29,6 +29,7 @@ learning-js/
 │ ├── script.js
 │ └── style.css
 └── README.md
+Note: Backend/data.json is the source of  data (database). Frontend/data.json is a build copy for Vercel static hosting.
 
 ## Tech Stack
 - Frontend: HTML, CSS, JavaScript (fetch API)
@@ -48,4 +49,4 @@ learning-js/
 4. Test API:
    Open http://localhost:3000/api/tours
 
-Last Updated: 06 Sep 2026
+Last Updated: 06 Sep 2026 

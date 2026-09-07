@@ -19,7 +19,7 @@ A responsive full-stack tour booking website.
 - [x] Deployed to Vercel + Render
 
 ## Project Structure
-
+```
 ├── Backend/
 │ ├── app.js (Express server)
 │ ├── data.json (Tour data)
@@ -29,6 +29,7 @@ A responsive full-stack tour booking website.
 │ ├── script.js
 │ └── style.css
 └── README.md
+```
 Note: Backend/data.json is the source of  data (database). Frontend/data.json is a build copy for Vercel static hosting.
 
 ## Tech Stack

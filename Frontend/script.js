@@ -19,6 +19,10 @@ async function loadTours() {
 }
 
 function displayTours(tours) {
+  if (!tours || tours.length === 0) {
+    toursContainer.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Failed to load tours. </p>`;
+    return;
+  }
   toursContainer.innerHTML = "";
   tours.forEach(tour => {
     const isBooked = bookings.includes(tour.id);

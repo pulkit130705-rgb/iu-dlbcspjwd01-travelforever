@@ -6,10 +6,16 @@ const searchInput = document.getElementById("search");
 const sortSelect = document.getElementById("sort");
 
 async function loadTours() {
-  const res = await fetch("./data.json");
-  allTours = await res.json();
-  displayTours(allTours);
-  updateBookingCount();
+  try {
+    const res = await fetch("./data.json");
+    if (!res.ok) throw new Error("Failed to fetch");
+    allTours = await res.json();
+    displayTours(allTours);
+    updateBookingCount();
+  } catch (error) {
+    console.error("Error loading tours:", error);
+    toursContainer.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Failed to load tours. Please try again later.</p>`;
+  }
 }
 
 function displayTours(tours) {
@@ -19,7 +25,7 @@ function displayTours(tours) {
     const btnLabel = isBooked ? "Booked ✓" : "Book Now";
     const card = `
       <div class="tour-card">
-        <img src="${tour.image}" alt="${tour.city}" style="width:100%; height:180px; object-fit:cover; border-radius:8px;">
+        <img src="${tour.image}?w=500&auto=format&fit=crop&q=60" loading="lazy" alt="${tour.city}" style="width:100%; height:180px;; object-fit:cover; border-radius:8px;">
         <h3 style="color:#0ea5e9;">${tour.city}</h3>
         <p>Price: Rs.${tour.price}</p>
         <p>${tour.description || 'Amazing tour package'}</p>
